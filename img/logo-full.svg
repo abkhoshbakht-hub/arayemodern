@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Drop Shadow -->
+    <filter id="fullLogoShadow" x="-20%" y="-20%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.6"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#FFD700" flood-opacity="0.2"/>
+    </filter>
+
+    <!-- Metallic Gold Gradients -->
+    <linearGradient id="goldLightF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5C2"/>
+      <stop offset="30%" stop-color="#E8BE52"/>
+      <stop offset="60%" stop-color="#C69324"/>
+      <stop offset="85%" stop-color="#FDE88E"/>
+      <stop offset="100%" stop-color="#8F5F0E"/>
+    </linearGradient>
+
+    <linearGradient id="goldFacetF" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9C6B14"/>
+      <stop offset="35%" stop-color="#FEEA9C"/>
+      <stop offset="55%" stop-color="#FFFFFF"/>
+      <stop offset="75%" stop-color="#EBBF50"/>
+      <stop offset="100%" stop-color="#734707"/>
+    </linearGradient>
+
+    <linearGradient id="goldDarkFacetF" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A6771F"/>
+      <stop offset="100%" stop-color="#543606"/>
+    </linearGradient>
+
+    <linearGradient id="gearGoldF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C69324"/>
+      <stop offset="40%" stop-color="#EDB845"/>
+      <stop offset="70%" stop-color="#8F5E0D"/>
+      <stop offset="100%" stop-color="#E8BE52"/>
+    </linearGradient>
+
+    <!-- Metallic Silver Gradients -->
+    <linearGradient id="chromeSilverF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#E2E8F0"/>
+      <stop offset="60%" stop-color="#8E9DAE"/>
+      <stop offset="85%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#556475"/>
+    </linearGradient>
+
+    <linearGradient id="chromeHighlightF" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#64748B"/>
+      <stop offset="45%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#fullLogoShadow)">
+
+    <!-- ==================== 1. GEAR (Right Side, Behind A) ==================== -->
+    <g id="gear">
+      <path d="M 320 120
+               L 345 100 L 365 116 L 348 140
+               L 370 160 L 396 154 L 404 180 L 378 196
+               L 386 220 L 412 228 L 408 256 L 380 262
+               L 378 282 L 396 298 L 382 322 L 358 312
+               C 330 292 312 228 304 180 Z"
+            fill="url(#gearGoldF)" stroke="#FFF2B2" stroke-width="2"/>
+
+      <path d="M 348 140 C 370 172 376 226 360 270" 
+            fill="none" stroke="#543606" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M 348 140 C 370 172 376 226 360 270" 
+            fill="none" stroke="url(#goldLightF)" stroke-width="1.8" stroke-linecap="round"/>
+    </g>
+
+    <!-- ==================== 2. LETTER 'A' (Faceted 3D Gold) ==================== -->
+    <!-- Left Leg -->
+    <g id="leftLeg">
+      <polygon points="262,48 230,98 150,230 182,252 238,150 262,112" fill="url(#goldDarkFacetF)"/>
+      <polygon points="262,48 215,130 182,252 210,266 278,130 280,82" fill="url(#goldFacetF)"/>
+      <polygon points="262,48 280,82 238,150 230,98" fill="#FFF8D6"/>
+    </g>
+
+    <!-- Right Leg -->
+    <g id="rightLeg">
+      <polygon points="262,48 300,85 368,235 334,250 288,135" fill="url(#goldLightF)"/>
+      <polygon points="368,235 402,252 356,266 334,250" fill="url(#goldDarkFacetF)"/>
+      <polygon points="334,250 356,266 302,150 288,135" fill="url(#goldFacetF)"/>
+      <polygon points="262,48 278,74 246,74" fill="#FFFFFF" opacity="0.95"/>
+    </g>
+
+    <!-- ==================== 3. FLUID SILVER WAVE RIBBON ==================== -->
+    <g id="silverRibbon">
+      <path d="M 92 195 
+               C 134 162, 178 168, 232 138
+               C 272 118, 320 134, 358 158
+               C 320 174, 272 158, 222 182
+               C 168 208, 122 214, 92 195 Z" 
+            fill="url(#chromeSilverF)"/>
+      
+      <path d="M 136 178 C 105 184, 80 190, 68 198 C 98 204, 134 200, 170 188 Z" fill="#FFFFFF"/>
+      <path d="M 152 204 C 116 210, 90 215, 82 222 C 110 227, 150 220, 190 208 Z" fill="url(#chromeHighlightF)"/>
+
+      <path d="M 92 195 C 142 168, 188 168, 238 142 C 282 122, 328 138, 358 158" 
+            fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 122 202 C 170 184, 222 170, 280 170 C 328 170, 352 194, 368 210" 
+            fill="none" stroke="url(#chromeHighlightF)" stroke-width="2.2"/>
+    </g>
+
+    <!-- ==================== 4. FLUID GOLDEN LOWER WAVE ==================== -->
+    <g id="goldRibbon">
+      <path d="M 156 210
+               C 196 230, 250 254, 310 240
+               C 344 230, 370 205, 388 190
+               C 368 220, 332 252, 288 258
+               C 234 265, 184 242, 146 220 Z"
+            fill="url(#goldFacetF)"/>
+
+      <path d="M 172 224
+               C 216 250, 266 264, 320 254
+               C 300 270, 246 274, 196 258
+               C 166 248, 148 234, 138 225 Z"
+            fill="url(#goldDarkFacetF)"/>
+      
+      <path d="M 156 210 C 210 240, 270 256, 328 244 C 358 234, 376 214, 388 190"
+            fill="none" stroke="#FFF8D6" stroke-width="3.2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Center Connecting Core -->
+    <g id="silverCenterCore">
+      <path d="M 228 152 
+               C 260 166, 300 196, 318 245 
+               L 300 248 
+               C 280 208, 246 178, 212 162 Z" 
+            fill="url(#chromeHighlightF)"/>
+      <path d="M 266 166 C 290 190, 312 218, 326 250" 
+            fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+    </g>
+
+    <!-- Sparkle Lens Flares -->
+    <g id="sparklePoints">
+      <circle cx="262" cy="52" r="3.5" fill="#FFFFFF"/>
+      <line x1="250" y1="52" x2="274" y2="52" stroke="#FFFFFF" stroke-width="1.4"/>
+      <line x1="262" y1="40" x2="262" y2="64" stroke="#FFFFFF" stroke-width="1.4"/>
+      
+      <circle cx="232" cy="142" r="3" fill="#FFFFFF"/>
+      <line x1="222" y1="142" x2="242" y2="142" stroke="#FFFFFF" stroke-width="1.2"/>
+      <line x1="232" y1="132" x2="232" y2="152" stroke="#FFFFFF" stroke-width="1.2"/>
+    </g>
+
+    <!-- ==================== 5. PERSIAN TEXT: آرایه مدرن ==================== -->
+    <g id="persianText" transform="translate(0, 332)">
+      <!-- 3D Shadow -->
+      <text x="256" y="26" text-anchor="middle" 
+            font-family="'Vazirmatn', 'Shabnam', 'B Titr', 'Tahoma', sans-serif" 
+            font-weight="900" font-size="52" fill="#3D2603" letter-spacing="1">
+        آرایه مدرن
+      </text>
+      <!-- Base Gold -->
+      <text x="256" y="21" text-anchor="middle" 
+            font-family="'Vazirmatn', 'Shabnam', 'B Titr', 'Tahoma', sans-serif" 
+            font-weight="900" font-size="52" fill="url(#goldLightF)" stroke="#7A500B" stroke-width="1.8" letter-spacing="1">
+        آرایه مدرن
+      </text>
+      <!-- Specular Highlight -->
+      <text x="256" y="19" text-anchor="middle" 
+            font-family="'Vazirmatn', 'Shabnam', 'B Titr', 'Tahoma', sans-serif" 
+            font-weight="900" font-size="52" fill="none" stroke="url(#goldFacetF)" stroke-width="1.2" letter-spacing="1">
+        آرایه مدرن
+      </text>
+    </g>
+
+    <!-- ==================== 6. ENGLISH TEXT: ARRAYE MODERN ==================== -->
+    <g id="englishText" transform="translate(0, 400)">
+      <text x="256" y="3" text-anchor="middle" 
+            font-family="'Montserrat', 'Cinzel', 'Plus Jakarta Sans', Arial, sans-serif" 
+            font-weight="800" font-size="22" fill="#3D2603" letter-spacing="8">
+        ARRAYE MODERN
+      </text>
+      <text x="256" y="0" text-anchor="middle" 
+            font-family="'Montserrat', 'Cinzel', 'Plus Jakarta Sans', Arial, sans-serif" 
+            font-weight="800" font-size="22" fill="url(#goldFacetF)" letter-spacing="8">
+        ARRAYE MODERN
+      </text>
+    </g>
+
+    <!-- ==================== 7. SUBTITLE: — BUSHEHR — ==================== -->
+    <g id="bushehrSubtitle" transform="translate(0, 440)">
+      <line x1="145" y1="-5" x2="195" y2="-5" stroke="url(#goldLightF)" stroke-width="2.2" stroke-linecap="round"/>
+      <text x="256" y="0" text-anchor="middle" 
+            font-family="'Montserrat', 'Cinzel', 'Plus Jakarta Sans', Arial, sans-serif" 
+            font-weight="700" font-size="15" fill="url(#goldFacetF)" letter-spacing="6">
+        BUSHEHR
+      </text>
+      <line x1="317" y1="-5" x2="367" y2="-5" stroke="url(#goldLightF)" stroke-width="2.2" stroke-linecap="round"/>
+    </g>
+
+  </g>
+</svg>

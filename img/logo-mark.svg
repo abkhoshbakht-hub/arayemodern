@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 360" width="100%" height="100%">
+  <defs>
+    <!-- Drop Shadow -->
+    <filter id="emblemShadow" x="-20%" y="-20%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.55"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#FFD700" flood-opacity="0.2"/>
+    </filter>
+
+    <!-- Metallic Gold Gradients -->
+    <linearGradient id="goldLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5C2"/>
+      <stop offset="30%" stop-color="#E8BE52"/>
+      <stop offset="60%" stop-color="#C69324"/>
+      <stop offset="85%" stop-color="#FDE88E"/>
+      <stop offset="100%" stop-color="#8F5F0E"/>
+    </linearGradient>
+
+    <linearGradient id="goldFacet1" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9C6B14"/>
+      <stop offset="35%" stop-color="#FEEA9C"/>
+      <stop offset="55%" stop-color="#FFFFFF"/>
+      <stop offset="75%" stop-color="#EBBF50"/>
+      <stop offset="100%" stop-color="#734707"/>
+    </linearGradient>
+
+    <linearGradient id="goldDarkFacet" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A6771F"/>
+      <stop offset="100%" stop-color="#543606"/>
+    </linearGradient>
+
+    <linearGradient id="gearGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C69324"/>
+      <stop offset="40%" stop-color="#EDB845"/>
+      <stop offset="70%" stop-color="#8F5E0D"/>
+      <stop offset="100%" stop-color="#E8BE52"/>
+    </linearGradient>
+
+    <!-- Metallic Silver/Chrome Gradients -->
+    <linearGradient id="chromeSilver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#E2E8F0"/>
+      <stop offset="60%" stop-color="#8E9DAE"/>
+      <stop offset="85%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#556475"/>
+    </linearGradient>
+
+    <linearGradient id="chromeHighlight" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#64748B"/>
+      <stop offset="45%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#emblemShadow)">
+
+    <!-- ==================== 1. GEAR (Right Side, Behind A) ==================== -->
+    <g id="gearEmblem">
+      <!-- Outer Gear Body & Teeth -->
+      <path d="M 245 80
+               L 268 62 L 286 78 L 270 100
+               L 290 118 L 315 112 L 322 135 L 298 150
+               L 305 174 L 328 180 L 325 206 L 298 212
+               L 296 230 L 312 245 L 300 268 L 278 258
+               C 255 240 238 180 230 135 Z"
+            fill="url(#gearGold)" stroke="#FFF2B2" stroke-width="1.8"/>
+
+      <!-- Inner gear circular groove -->
+      <path d="M 270 100 C 290 130 295 180 280 220" 
+            fill="none" stroke="#543606" stroke-width="4" stroke-linecap="round"/>
+      <path d="M 270 100 C 290 130 295 180 280 220" 
+            fill="none" stroke="url(#goldLight)" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- ==================== 2. LETTER 'A' (Faceted 3D Golden Legs) ==================== -->
+    <!-- Left Leg of 'A' -->
+    <g id="leftLegA">
+      <!-- Dark Underside Facet -->
+      <polygon points="195,18 165,65 92,190 122,210 175,115 195,78" fill="url(#goldDarkFacet)"/>
+      <!-- Main Reflective Front Plane -->
+      <polygon points="195,18 152,95 122,210 148,222 210,95 212,50" fill="url(#goldFacet1)"/>
+      <!-- Top Bevel Highlight -->
+      <polygon points="195,18 212,50 175,115 165,65" fill="#FFF8D6"/>
+    </g>
+
+    <!-- Right Leg of 'A' -->
+    <g id="rightLegA">
+      <!-- Broad Gold Facet -->
+      <polygon points="195,18 230,52 292,195 260,208 218,100" fill="url(#goldLight)"/>
+      <!-- Beveled Bottom Foot -->
+      <polygon points="292,195 322,210 280,222 260,208" fill="url(#goldDarkFacet)"/>
+      <polygon points="260,208 280,222 230,112 218,100" fill="url(#goldFacet1)"/>
+      <!-- Gleam Diamond on Apex -->
+      <polygon points="195,18 210,42 180,42" fill="#FFFFFF" opacity="0.95"/>
+    </g>
+
+    <!-- ==================== 3. MARITIME SILVER WAVE (Flowing across A) ==================== -->
+    <g id="silverStream">
+      <!-- Upper dynamic silver wave body -->
+      <path d="M 40 152 
+               C 80 124, 120 128, 170 102
+               C 205 84, 250 98, 285 120
+               C 250 134, 205 120, 160 142
+               C 112 165, 70 170, 40 152 Z" 
+            fill="url(#chromeSilver)"/>
+      
+      <!-- Aerodynamic feather wingtips on left -->
+      <path d="M 80 138 C 52 142, 30 147, 20 154 C 48 160, 80 156, 112 147 Z" fill="#FFFFFF"/>
+      <path d="M 95 162 C 62 167, 38 171, 32 178 C 58 182, 94 176, 130 166 Z" fill="url(#chromeHighlight)"/>
+
+      <!-- Specular ridge gleams -->
+      <path d="M 40 152 C 85 128, 128 128, 174 105 C 214 88, 255 102, 285 120" 
+            fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round"/>
+      <path d="M 68 158 C 112 142, 160 130, 214 130 C 258 130, 280 150, 294 165" 
+            fill="none" stroke="url(#chromeHighlight)" stroke-width="2"/>
+    </g>
+
+    <!-- ==================== 4. LOWER GOLDEN WAVE (Swooping Base) ==================== -->
+    <g id="goldStream">
+      <path d="M 98 165
+               C 135 184, 185 206, 240 192
+               C 270 184, 294 162, 310 148
+               C 292 175, 260 205, 220 210
+               C 170 216, 125 196, 90 174 Z"
+            fill="url(#goldFacet1)"/>
+
+      <path d="M 112 178
+               C 152 202, 198 215, 248 206
+               C 230 220, 180 224, 135 210
+               C 108 200, 92 188, 82 180 Z"
+            fill="url(#goldDarkFacet)"/>
+      
+      <!-- Golden crest ridge sheen -->
+      <path d="M 98 165 C 148 192, 204 208, 258 196 C 285 188, 302 170, 310 148"
+            fill="none" stroke="#FFF9D9" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- Center Connecting Silver Core -->
+    <g id="silverCrossCore">
+      <path d="M 165 115 
+               C 195 128, 230 155, 248 200 
+               L 232 202 
+               C 215 165, 182 138, 152 124 Z" 
+            fill="url(#chromeHighlight)"/>
+      <path d="M 200 128 C 222 150, 242 176, 255 204" 
+            fill="none" stroke="#FFFFFF" stroke-width="2"/>
+    </g>
+
+    <!-- Sparkle Lens Flares -->
+    <g id="sparkles">
+      <!-- Flare on apex of A -->
+      <circle cx="195" cy="22" r="3" fill="#FFFFFF"/>
+      <line x1="185" y1="22" x2="205" y2="22" stroke="#FFFFFF" stroke-width="1.2"/>
+      <line x1="195" y1="12" x2="195" y2="32" stroke="#FFFFFF" stroke-width="1.2"/>
+
+      <!-- Flare on wave crossing -->
+      <circle cx="168" cy="106" r="2.5" fill="#FFFFFF"/>
+      <line x1="158" y1="106" x2="178" y2="106" stroke="#FFFFFF" stroke-width="1"/>
+      <line x1="168" y1="96" x2="168" y2="116" stroke="#FFFFFF" stroke-width="1"/>
+    </g>
+
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+{
+  "name": "arayemodern",
+  "version": "1.0.0",
+  "private": true,
+  "description": "آرایه مدرن — مهندسی صنعتی و فناوری‌های دریایی | Araye Modern Website",
+  "scripts": {
+    "start": "node serve.js 3000",
+    "dev": "node serve.js 3000",
+    "serve": "node serve.js"
+  },
+  "keywords": [
+    "engineering",
+    "marine",
+    "industrial",
+    "cnc",
+    "bushehr"
+  ],
+  "author": "Araye Modern",
+  "license": "UNLICENSED"
+}
