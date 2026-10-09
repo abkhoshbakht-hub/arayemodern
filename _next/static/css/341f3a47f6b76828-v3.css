@@ -243,6 +243,638 @@ h1,h2,h3,h4,h5,h6,
   }
 }
 
+/* ====== FOOTER COLUMNS: PROFESSIONAL SPACING ====== */
+.ftr-top {
+  display: grid !important;
+  grid-template-columns: 1.7fr 1fr 1.15fr 1.25fr !important;
+  gap: clamp(2.6rem, 1.2rem + 3.6vw, 5.2rem) !important;
+  align-items: start !important;
+  padding-block: clamp(3rem, 1.8rem + 3.4vw, 5rem) !important;
+}
+
+.ftr-top > * {
+  min-width: 0 !important;
+}
+
+.ftr-top h4,
+.ftr-h4-2 {
+  font-size: 0.95rem !important;
+  font-weight: 760 !important;
+  letter-spacing: 0.01em !important;
+  color: #fff !important;
+  margin-bottom: 1.1rem !important;
+  padding-bottom: 0.7rem !important;
+  position: relative !important;
+}
+
+.ftr-top h4::after,
+.ftr-h4-2::after {
+  content: "" !important;
+  position: absolute !important;
+  inset-block-end: 0 !important;
+  inset-inline-start: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 34px !important;
+  height: 2px !important;
+  border-radius: 2px !important;
+  background: linear-gradient(90deg, var(--cyan-500), var(--cyan-300)) !important;
+}
+
+[dir="rtl"] .ftr-top h4::after,
+[dir="rtl"] .ftr-h4-2::after {
+  transform: translateX(50%) !important;
+}
+
+.ftr-col,
+.ftr-ct {
+  gap: 0.7rem !important;
+}
+
+.ftr-col li,
+.ftr-col a {
+  text-align: center !important;
+}
+
+.ftr-col a {
+  display: block !important;
+  font-size: var(--fs-xs) !important;
+  line-height: 1.6 !important;
+}
+
+.ftr-about,
+.ftr-strap {
+  text-align: center !important;
+  margin-inline: auto !important;
+}
+
+.ftr-about {
+  max-width: 34ch !important;
+}
+
+@media (max-width: 1024px) {
+  .ftr-top {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2.4rem !important;
+  }
+  .ftr-brand {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .ftr-top {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+/* ====== FOOTER: COMPACT HEIGHT ====== */
+.ftr-top {
+  padding-block: clamp(1.7rem, 1.1rem + 1.6vw, 2.7rem) !important;
+}
+
+.ftr-logo-img,
+.ftr-logo img {
+  width: 190px !important;
+  max-width: 100% !important;
+  display: block !important;
+  margin-inline: auto !important;
+  margin-bottom: 0.7rem !important;
+}
+
+.ftr-logo {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  line-height: 0 !important;
+  margin-bottom: 0.7rem !important;
+}
+
+.ftr-about {
+  line-height: 1.7 !important;
+  max-width: 40ch !important;
+  text-align: center !important;
+  margin-inline: auto !important;
+  margin-bottom: 0 !important;
+}
+
+.ftr-strap {
+  margin-top: 0.55rem !important;
+  text-align: center !important;
+  margin-inline: auto !important;
+}
+
+.ftr-top h4,
+.ftr-h4-2 {
+  margin-bottom: 0.75rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.ftr-col,
+.ftr-ct {
+  gap: 0.5rem !important;
+}
+
+.ftr-col a {
+  line-height: 1.45 !important;
+}
+
+.ftr-trust-in > div {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  text-align: center !important;
+}
+
+.ftr-trust-in {
+  padding-block: 0.85rem !important;
+  gap: 0.7rem !important;
+}
+
+.ftr-bar-in {
+  min-height: 0 !important;
+  padding-block: 0.7rem !important;
+}
+
+.ftr-logo {
+  margin-bottom: 0.7rem !important;
+}
+
+/* ====== QUALITY CHECKLIST ROWS: SHORTER + CENTERED ====== */
+.qual-list {
+  width: 100% !important;
+  max-width: 34rem !important;
+  margin-inline: auto !important;
+  justify-items: center !important;
+}
+
+.qual-list-h {
+  text-align: center !important;
+  margin-inline: auto !important;
+}
+
+.qual-i {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.6rem !important;
+  width: 100% !important;
+  max-width: 30rem !important;
+  margin-inline: auto !important;
+  padding: 0.65rem 0.95rem !important;
+  text-align: center !important;
+  justify-content: center !important;
+  font-size: var(--fs-xs) !important;
+  line-height: 1.5 !important;
+  border-radius: var(--r-sm) !important;
+}
+
+.qual-i .ok {
+  flex: none !important;
+}
+
+/* ====== CTA BAND: CENTERED (buttons removed) ====== */
+.cta {
+  text-align: center !important;
+}
+
+.cta-in {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  text-align: center !important;
+  max-width: 62rem !important;
+  margin-inline: auto !important;
+  padding-inline: var(--gut) !important;
+}
+
+.cta-copy {
+  text-align: center !important;
+  max-width: 100% !important;
+}
+
+.cta-copy h2 {
+  text-align: center !important;
+  max-width: 24ch !important;
+  margin-inline: auto !important;
+  margin-bottom: 0 !important;
+  text-wrap: balance !important;
+}
+
+.cta-copy p {
+  text-align: justify !important;
+  text-align-last: center !important;
+  text-justify: inter-word !important;
+  max-width: 52ch !important;
+  margin-inline: auto !important;
+  margin-top: 0.85rem !important;
+  line-height: 1.8 !important;
+}
+
+html[lang="ar"] .cta-copy p,
+html[lang="fa"] .cta-copy p {
+  line-height: 2 !important;
+}
+
+.cta:after {
+  background:
+    linear-gradient(180deg, rgba(5, 13, 24, 0.86) 0%, rgba(5, 13, 24, 0.7) 50%, rgba(5, 13, 24, 0.9) 100%),
+    radial-gradient(120% 100% at 50% 50%, rgba(0, 163, 224, 0.16), transparent 62%) !important;
+}
+
+/* ====== MQ TEASER (HOME MACHINERY) : CENTERED ====== */
+.mq-teaser {
+  text-align: center !important;
+}
+
+.mq-tabs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  overflow-x: visible !important;
+  padding-bottom: 0.9rem !important;
+}
+
+.mq-tab {
+  text-align: center !important;
+  flex: none !important;
+}
+
+.mq-panel {
+  text-align: center !important;
+}
+
+.mq-panel-h {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.35rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.mq-panel-h span {
+  text-align: center !important;
+  margin-inline: 0 !important;
+}
+
+.mq-panel-h em {
+  text-align: center !important;
+}
+
+.mq-tiles {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 0.8rem !important;
+  max-width: 54rem !important;
+  margin-inline: auto !important;
+}
+
+.mq-tile span {
+  text-align: center !important;
+}
+
+.mq-teaser .btn,
+.mq-teaser > .btn,
+.mq-teaser a.btn {
+  margin-inline: auto !important;
+}
+
+@media (max-width: 640px) {
+  .mq-tiles {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ====== EXPLORER (MACHINERY TABS) : CENTERED ====== */
+.exp-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 1px !important;
+  background: var(--line) !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+
+.exp-tab {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  justify-items: center !important;
+  text-align: center !important;
+  padding: 1rem 0.75rem !important;
+  border: 0 !important;
+  border-inline-end: 1px solid var(--line) !important;
+  border-inline-start: 0 !important;
+  background: var(--bg-soft) !important;
+  transition: background-color var(--t) var(--e), color var(--t) var(--e) !important;
+}
+
+.exp-tab:last-child {
+  border-inline-end: 0 !important;
+}
+
+.exp-tab-n,
+.exp-tab-l,
+.exp-tab-c {
+  text-align: center !important;
+  margin-inline: 0 !important;
+}
+
+.exp-tab-l {
+  font-size: 0.82rem !important;
+  line-height: 1.35 !important;
+}
+
+.exp-tab-n,
+.exp-tab-c {
+  font-size: 0.66rem !important;
+}
+
+.exp-tab.is-on {
+  background: #fff !important;
+  box-shadow: inset 0 -3px 0 var(--cyan-500) !important;
+}
+
+.exp-panel {
+  text-align: center !important;
+}
+
+.exp-panel-h {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.exp-panel-h h3 {
+  text-align: center !important;
+  margin-inline: 0 !important;
+  margin-bottom: 0.6rem !important;
+}
+
+.exp-caps {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 0 !important;
+}
+
+.exp-caps li {
+  text-align: center !important;
+}
+
+.exp-tiles {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 0.8rem !important;
+}
+
+.exp-tile-cap {
+  text-align: center !important;
+}
+
+.exp-tile-cap em,
+.exp-tile-cap b {
+  text-align: center !important;
+}
+
+.exp-tile-ico {
+  inset-inline-start: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+[dir="rtl"] .exp-tile-ico {
+  transform: translateX(50%) !important;
+}
+
+@media (max-width: 1024px) {
+  .exp-tabs {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .exp-tabs {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .exp-tiles {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .exp-tabs,
+  .exp-tiles {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ====== BENTO / INDUSTRIES: PROFESSIONAL IMAGE CARDS ====== */
+.bento {
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1.1rem !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+.bento-c {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 0.55rem !important;
+  min-height: 260px !important;
+  padding: 1.5rem 1.25rem 1.6rem !important;
+  border-radius: var(--r-lg) !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  background: var(--navy-800) !important;
+  box-shadow: 0 2px 6px rgba(10, 25, 47, 0.06), 0 14px 34px rgba(10, 25, 47, 0.08) !important;
+  transition: transform 0.4s var(--e-out), box-shadow 0.4s var(--e) !important;
+}
+
+.bento-c::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: -2 !important;
+  background-size: cover !important;
+  background-position: center 38% !important;
+  transform: scale(1.16) !important;
+  transition: transform 0.7s var(--e-out), filter 0.5s var(--e) !important;
+}
+
+.bento-c::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: -1 !important;
+  height: auto !important;
+  transform: none !important;
+  background:
+    linear-gradient(180deg, rgba(5, 13, 24, 0.22) 0%, rgba(5, 13, 24, 0.55) 42%, rgba(5, 13, 24, 0.95) 100%),
+    linear-gradient(120deg, rgba(0, 163, 224, 0.18), transparent 55%) !important;
+  transition: background 0.4s var(--e) !important;
+}
+
+/* Industry-matched imagery */
+.bento-c:nth-child(1)::before { background-image: url(/previews/arayemodern/img/hero.jpg); }        /* marine & shipbuilding */
+.bento-c:nth-child(2)::before { background-image: url(/previews/arayemodern/img/mach-10.jpg); }      /* oil & gas - casting/forging */
+.bento-c:nth-child(3)::before { background-image: url(/previews/arayemodern/img/svc-piping.jpg); }   /* ports & quays - piping */
+.bento-c:nth-child(4)::before { background-image: url(/previews/arayemodern/img/svc-ndt.jpg); }      /* offshore - NDT inspection */
+.bento-c:nth-child(5)::before { background-image: url(/previews/arayemodern/img/mach-19.jpg); }      /* industrial production - die cast parts */
+.bento-c:nth-child(6)::before { background-image: url(/previews/arayemodern/img/svc-electronics.jpg); } /* energy - electrical */
+.bento-c:nth-child(7)::before { background-image: url(/previews/arayemodern/img/mach-09.jpg); }      /* construction - heavy tooling */
+.bento-c:nth-child(8)::before { background-image: url(/previews/arayemodern/img/mach-01.jpg); }      /* R&D - 3D scanning */
+
+.bento-c,
+.bento-c--1,
+.bento-c--2 {
+  grid-column: span 1 !important;
+}
+
+.bento-c h3,
+.bento-c--1 h3,
+.bento-c--2 h3 {
+  font-size: 1.02rem !important;
+  font-weight: 760 !important;
+  color: #fff !important;
+  margin: 0 !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6) !important;
+  text-align: center !important;
+}
+
+.bento-c p,
+.bento-c--1 p,
+.bento-c--2 p {
+  font-size: var(--fs-xs) !important;
+  color: rgba(255, 255, 255, 0.74) !important;
+  line-height: 1.75 !important;
+  margin: 0 !important;
+  text-align: center !important;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55) !important;
+}
+
+.bento-ico,
+.bento-c--1 .bento-ico,
+.bento-c--2 .bento-ico {
+  width: 50px !important;
+  height: 50px !important;
+  margin-bottom: 0.35rem !important;
+  border-radius: 14px !important;
+  color: var(--cyan-300) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  backdrop-filter: blur(6px) !important;
+  transition: background-color var(--t) var(--e), color var(--t) var(--e),
+    border-color var(--t) var(--e), transform var(--t) var(--e) !important;
+}
+
+.bento-idx {
+  position: absolute !important;
+  inset-block-start: 1rem !important;
+  inset-inline-start: 1.1rem !important;
+  inset-inline-end: auto !important;
+  font-size: 0.68rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+  background: rgba(5, 13, 24, 0.42) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 100px !important;
+  padding: 0.28rem 0.6rem !important;
+  line-height: 1 !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+.bento-c:hover {
+  background: var(--navy-800) !important;
+  transform: translateY(-6px) !important;
+  box-shadow: 0 10px 22px rgba(10, 25, 47, 0.12), 0 26px 54px rgba(0, 90, 130, 0.22) !important;
+}
+
+.bento-c:hover::before {
+  transform: scale(1.26) !important;
+  filter: saturate(1.15) !important;
+}
+
+.bento-c:hover .bento-ico {
+  background: var(--cyan-500) !important;
+  border-color: var(--cyan-400) !important;
+  color: #fff !important;
+  transform: translateY(-2px) !important;
+}
+
+@media (max-width: 1024px) {
+  .bento {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .bento-c {
+    min-height: 230px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .bento {
+    grid-template-columns: 1fr !important;
+  }
+  .bento-c {
+    min-height: 200px !important;
+  }
+}
+
+/* ====== SECTION HEADERS: ALWAYS CENTERED ====== */
+.sec-h {
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+.sec-h .eyebrow,
+.sec-h .sec-title,
+.sec-h .sec-lead {
+  text-align: center !important;
+  margin-inline: auto !important;
+}
+
+.sec-h .sec-lead {
+  text-align: justify !important;
+  text-align-last: center !important;
+  text-justify: inter-word !important;
+}
+
+/* ====== PROCESS STEP NUMBERS: TRUE CENTER ====== */
+.step {
+  text-align: center !important;
+}
+
+.step-n {
+  margin-inline: auto !important;
+  place-items: center !important;
+}
+
+.step-n span {
+  position: absolute !important;
+  inset: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  line-height: 1 !important;
+}
+
 /* ====== STATS: EQUAL COLUMNS, CENTERED CONTENT ====== */
 .home-stats {
   grid-template-columns: repeat(4, 1fr) !important;
@@ -477,6 +1109,49 @@ html[lang=fa] .hero-lead {
 .ftr-brand .ftr-about,
 .ftr-brand .ftr-strap {
   clear: both !important;
+}
+
+/* ====== FOOTER LOGO ALIGNMENT (LAST WORD) ====== */
+.ftr-brand {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.ftr-logo {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  line-height: 0 !important;
+  margin: 0 0 0.7rem !important;
+}
+
+.ftr-logo-img,
+.ftr-logo img {
+  width: 190px !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto 0.7rem !important;
+}
+
+.ftr-brand .ftr-about,
+.ftr-brand .ftr-strap {
+  clear: both !important;
+  align-self: center !important;
+  width: 100% !important;
+  max-width: 40ch !important;
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+.ftr-brand .ftr-strap {
+  max-width: 100% !important;
 }
 
 @media (max-width: 768px) {
