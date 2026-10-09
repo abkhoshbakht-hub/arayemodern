@@ -23,7 +23,7 @@ const MIME = {
 const server = http.createServer((req, res) => {
   let urlPath = decodeURIComponent(req.url.split('?')[0]);
   if (urlPath === '/' || urlPath === '') {
-    res.writeHead(302, { Location: '/previews/arayemodern/fa.html' });
+    res.writeHead(302, { Location: '/previews/arayemodern/en.html' });
     res.end();
     return;
   }
@@ -45,15 +45,21 @@ const server = http.createServer((req, res) => {
     }
   }
 
+  const noCache = {
+    'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+    Pragma: 'no-cache',
+    Expires: '0',
+  };
+
   if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME[ext] || 'application/octet-stream';
-    res.writeHead(200, { 'Content-Type': contentType });
+    res.writeHead(200, { 'Content-Type': contentType, ...noCache });
     fs.createReadStream(filePath).pipe(res);
   } else {
     const fallback = path.join(ROOT, 'fa.html');
     if (fs.existsSync(fallback)) {
-      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', ...noCache });
       fs.createReadStream(fallback).pipe(res);
     } else {
       res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
