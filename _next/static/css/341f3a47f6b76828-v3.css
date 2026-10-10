@@ -1165,3 +1165,329 @@ html[lang=fa] .hero-lead {
     margin: 0 !important;
   }
 }
+/* FOOTER MOBILE: hide "Quick Links" + "Services" columns (mobile only, desktop untouched)
+   Change 768px -> 620px for narrower phones, or -> 1024px to include tablets. */
+@media (max-width: 768px) {
+  .ftr-hide-sm {
+    display: none !important;
+  }
+  .ftr-top {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .ftr-brand {
+    grid-column: auto !important;
+  }
+}
+/* FOOTER CREDIT: "Design & Development: Lian Design" + logo (liandesign.ir) */
+.ftr-credit {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.65rem !important;
+  font-size: var(--fs-xs) !important;
+  color: rgba(255, 255, 255, 0.68) !important;
+  text-decoration: none !important;
+  transition: opacity var(--t) var(--e);
+}
+.ftr-credit:hover {
+  opacity: 0.85;
+}
+.ftr-credit-logo {
+  display: block !important;
+  width: auto !important;
+  height: 64px !important;
+  max-width: 100% !important;
+  flex: none !important;
+  object-fit: contain !important;
+}
+@media (max-width: 768px) {
+  .ftr-credit-logo {
+    height: 48px !important;
+  }
+}
+/* FOOTER MOBILE: centre every remaining footer item
+   (contact rows, copyright line, Lian Design credit) */
+@media (max-width: 768px) {
+  .ftr-top,
+  .ftr-top > *,
+  .ftr-brand,
+  .ftr-about,
+  .ftr-strap,
+  .ftr-top h4,
+  .ftr-ct,
+  .ftr-ct a,
+  .ftr-ct > span,
+  .ftr-ct span span,
+  .ftr-col,
+  .ftr-col li,
+  .ftr-col a,
+  .ftr-trust-in,
+  .ftr-trust-in > div,
+  .ftr-bar-in,
+  .ftr-bar-in > *,
+  .ftr-bar p,
+  .ftr-credit {
+    text-align: center !important;
+  }
+  .ftr-ct a,
+  .ftr-ct > span,
+  .ftr-trust-in > div,
+  .ftr-bar-in,
+  .ftr-credit {
+    justify-content: center !important;
+  }
+  .ftr-ct a,
+  .ftr-ct > span {
+    width: 100% !important;
+  }
+  .ftr-bar-in {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.9rem !important;
+  }
+}
+/* ============================================================
+   DAY / NIGHT TOGGLE
+   ============================================================ */
+.theme-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 42px;
+  min-width: 42px;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--r-sm);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.82);
+  font-family: inherit;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  flex: none;
+  transition: background-color var(--t) var(--e), color var(--t) var(--e),
+    border-color var(--t) var(--e);
+}
+.theme-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--cyan-400);
+  color: #fff;
+}
+.theme-btn:focus-visible {
+  outline: 2px solid var(--cyan-400);
+  outline-offset: 2px;
+}
+.theme-btn svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+.theme-btn .ico-moon {
+  display: none;
+}
+html[data-theme="dark"] .theme-btn .ico-sun {
+  display: none;
+}
+html[data-theme="dark"] .theme-btn .ico-moon {
+  display: block;
+}
+@media (max-width: 1024px) {
+  .theme-btn {
+    padding: 0;
+    width: 42px;
+  }
+  .theme-btn-text {
+    display: none;
+  }
+}
+
+/* ---------- night palette ---------- */
+html[data-theme="dark"] {
+  --bg: #0a1220;
+  --bg-soft: #111c2e;
+  --bg-soft-2: #18243a;
+  --line: #26364f;
+  --line-soft: #1d2b40;
+  --ink: #e8f1fb;
+  --ink-2: #b6c7da;
+  --ink-3: #8ba0b8;
+  --ink-4: #6d8199;
+  --cyan-50: #0d2a3f;
+  --cyan-100: #1b3d55;
+  --sh-1: 0 1px 2px rgba(0, 0, 0, 0.5), 0 4px 14px rgba(0, 0, 0, 0.35);
+  --sh-2: 0 12px 34px rgba(0, 0, 0, 0.5);
+  --sh-3: 0 26px 64px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+/* ---------- cards & surfaces that hardcode #fff ---------- */
+html[data-theme="dark"] .srow,
+html[data-theme="dark"] .mq-teaser,
+html[data-theme="dark"] .gf-b,
+html[data-theme="dark"] .value,
+html[data-theme="dark"] .svc-ix,
+html[data-theme="dark"] .ind-chip,
+html[data-theme="dark"] .ind-row,
+html[data-theme="dark"] .explorer,
+html[data-theme="dark"] .sheet-in,
+html[data-theme="dark"] .q-c,
+html[data-theme="dark"] .proof li,
+html[data-theme="dark"] .ct-c,
+html[data-theme="dark"] .msg-card,
+html[data-theme="dark"] .form,
+html[data-theme="dark"] .f-field input,
+html[data-theme="dark"] .f-field select,
+html[data-theme="dark"] .f-field textarea,
+html[data-theme="dark"] .up-btn,
+html[data-theme="dark"] .f-chip,
+html[data-theme="dark"] .langsw-m {
+  background: var(--bg-soft) !important;
+  color: var(--ink) !important;
+}
+html[data-theme="dark"] .exp-tabs {
+  background: #0d1626 !important;
+}
+html[data-theme="dark"] .exp-tab {
+  background: #16223a !important;
+}
+html[data-theme="dark"] .exp-tab.is-on {
+  background: var(--bg-soft) !important;
+}
+html[data-theme="dark"] .gf-b.is-on {
+  background: var(--cyan-500) !important;
+  border-color: var(--cyan-500) !important;
+}
+
+/* ---------- form alerts ---------- */
+html[data-theme="dark"] .f-alert.ok {
+  background: #08291c !important;
+  color: #6ee7a8 !important;
+  border-color: #14532d !important;
+}
+html[data-theme="dark"] .f-alert.no {
+  background: #2b0f0f !important;
+  color: #fca5a5 !important;
+  border-color: #7f1d1d !important;
+}
+
+/* ============================================================
+   COMPACT / MINIMAL PASS
+   Tightens vertical rhythm across the whole site.
+   Only spacing + a few font sizes change; colours and layout stay.
+   ============================================================ */
+
+/* ---------- 1. master spacing scale ---------- */
+:root {
+  /* was clamp(2rem,1rem + 3vw,3.5rem) */
+  --sec: clamp(1.4rem, 0.7rem + 1.8vw, 2.3rem);
+  /* header was 140px */
+  --hdr: 108px;
+}
+
+/* ---------- 2. inner-page hero (phero) ---------- */
+.phero {
+  padding-block: calc(var(--hdr) + clamp(1.2rem, 0.6rem + 1.6vw, 2.1rem))
+    clamp(1.4rem, 0.9rem + 1.4vw, 2.3rem) !important;
+}
+.crumb {
+  margin-bottom: 0.7rem !important;
+}
+.phero-eyebrow {
+  margin-bottom: 0.5rem !important;
+}
+.phero-title {
+  margin-bottom: 0.55rem !important;
+}
+.phero-lead {
+  margin-block: 0 !important;
+}
+
+/* ---------- 3. section headers ---------- */
+.sec-h {
+  margin-bottom: clamp(1.2rem, 0.6rem + 1.4vw, 2rem) !important;
+}
+.sec-h .eyebrow {
+  margin-bottom: 0.5rem !important;
+}
+
+/* ---------- 4. footer ---------- */
+.ftr-top {
+  padding-block: clamp(1.3rem, 0.8rem + 1.2vw, 2rem) !important;
+  gap: clamp(1.6rem, 0.8rem + 1.8vw, 2.6rem) !important;
+}
+.ftr-logo-img,
+.ftr-logo img {
+  width: 168px !important;
+  margin: 0 auto 0.6rem !important;
+}
+.ftr-about {
+  line-height: 1.6 !important;
+  max-width: 46ch !important;
+}
+.ftr-strap {
+  margin-top: 0.4rem !important;
+}
+.ftr-top h4,
+.ftr-h4-2 {
+  margin-bottom: 0.55rem !important;
+  padding-bottom: 0.4rem !important;
+}
+.ftr-col {
+  gap: 0.38rem !important;
+}
+.ftr-ct {
+  gap: 0.45rem !important;
+}
+.ftr-trust-in {
+  padding-block: 0.7rem !important;
+  gap: 0.6rem !important;
+}
+.ftr-bar-in {
+  min-height: 0 !important;
+  padding-block: 0.55rem !important;
+}
+.ftr-credit-logo {
+  height: 52px !important;
+}
+
+/* ---------- 5. mobile ---------- */
+@media (max-width: 1024px) {
+  :root {
+    --hdr: 64px;
+  }
+}
+@media (max-width: 768px) {
+  :root {
+    --sec: clamp(1.2rem, 0.6rem + 1.4vw, 1.6rem);
+  }
+  .phero {
+    padding-block: calc(var(--hdr) + 1.1rem) 1.3rem !important;
+  }
+  .crumb {
+    margin-bottom: 0.55rem !important;
+  }
+  .ftr-top {
+    padding-block: 1.3rem !important;
+    gap: 1.5rem !important;
+  }
+  .ftr-credit-logo {
+    height: 44px !important;
+  }
+}
+/* COMPACT PASS 2: footer mobile */
+@media (max-width: 768px) {
+  .ftr-brand {
+    margin-bottom: 0 !important;
+  }
+  .ftr-about {
+    line-height: 1.55 !important;
+  }
+  .ftr-top {
+    row-gap: 1.1rem !important;
+  }
+  .ftr-ct {
+    gap: 0.4rem !important;
+  }
+}
