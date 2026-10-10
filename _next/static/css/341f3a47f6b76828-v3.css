@@ -1491,3 +1491,64 @@ html[data-theme="dark"] .f-alert.no {
     gap: 0.4rem !important;
   }
 }
+
+/* ============================================================
+   HEADER: restore original height (was reduced to 108px in the
+   compact pass, which cropped the logo). Only --hdr changes.
+   ============================================================ */
+:root {
+  --hdr: 140px;
+}
+@media (max-width: 1024px) {
+  :root {
+    --hdr: 66px;
+  }
+}
+
+/* give the hero back its original top clearance under the taller header */
+.phero {
+  padding-block: calc(var(--hdr) + clamp(1.2rem, 0.6rem + 1.6vw, 2.1rem))
+    clamp(1.4rem, 0.9rem + 1.4vw, 2.3rem) !important;
+}
+@media (max-width: 1024px) {
+  .phero {
+    padding-block: calc(var(--hdr) + 1.1rem) 1.3rem !important;
+  }
+}
+/* ============================================================
+   HERO LEAD: centre the intro paragraph on inner pages
+   ============================================================ */
+.phero-lead {
+  text-align: center !important;
+  text-align-last: center !important;
+  margin-inline: auto !important;
+  max-width: 68ch !important;
+}
+.phero-in {
+  text-align: center !important;
+}
+.phero-in .crumb {
+  text-align: center !important;
+}
+/* ============================================================
+   PHERO (inner pages): reduce vertical space.
+   --hdr is NOT touched - the 140px header clearance stays.
+   ============================================================ */
+.phero {
+  padding-block: calc(var(--hdr) + clamp(0.9rem, 0.5rem + 1.1vw, 1.5rem))
+    clamp(1rem, 0.6rem + 1vw, 1.7rem) !important;
+}
+.crumb {
+  margin-bottom: 0.5rem !important;
+}
+.phero-eyebrow {
+  margin-bottom: 0.4rem !important;
+}
+.phero-title {
+  margin-bottom: 0.45rem !important;
+}
+@media (max-width: 1024px) {
+  .phero {
+    padding-block: calc(var(--hdr) + 0.9rem) 1.1rem !important;
+  }
+}
