@@ -1631,3 +1631,67 @@ html[data-theme="dark"] .soc.is-off {
 .ftr .soc-row {
   margin-top: 1rem !important;
 }
+
+/* ============================================================
+   MACHINERY TABS — single remaining tab, centred
+   ============================================================ */
+.exp-tabs:has(> .exp-tab:only-child) {
+  background: transparent !important;
+  border-bottom: 0 !important;
+  padding-inline: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+}
+.exp-tabs > .exp-tab:only-child {
+  width: auto !important;
+  min-width: 260px !important;
+  max-width: 100% !important;
+  border: 0 !important;
+  border-bottom: 3px solid var(--cyan-500) !important;
+  border-radius: var(--r-md) var(--r-md) 0 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0.85rem 1.6rem !important;
+  min-height: 0 !important;
+}
+.exp-tabs > .exp-tab:only-child .exp-tab-l {
+  font-size: var(--fs-sm) !important;
+  color: var(--cyan-600) !important;
+}
+html[data-theme="dark"] .exp-tabs > .exp-tab:only-child {
+  background: transparent !important;
+  border-bottom-color: var(--cyan-500) !important;
+}
+html[data-theme="dark"] .exp-tabs > .exp-tab:only-child .exp-tab-l {
+  color: var(--cyan-300) !important;
+}
+/* ============================================================
+   HOME MACHINERY TEASER — single remaining tab, centred
+   ============================================================ */
+.mq-tabs:has(> .mq-tab:only-child) {
+  background: transparent !important;
+  border: 0 !important;
+  padding-inline: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+}
+.mq-tabs > .mq-tab:only-child {
+  width: auto !important;
+  min-width: 240px !important;
+  max-width: 100% !important;
+  border: 0 !important;
+  border-bottom: 3px solid var(--cyan-500) !important;
+  border-radius: var(--r-sm) var(--r-sm) 0 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0.7rem 1.5rem !important;
+  color: var(--cyan-600) !important;
+  font-size: var(--fs-sm) !important;
+}
+html[data-theme="dark"] .mq-tabs > .mq-tab:only-child {
+  background: transparent !important;
+  border-bottom-color: var(--cyan-500) !important;
+  color: var(--cyan-300) !important;
+}
