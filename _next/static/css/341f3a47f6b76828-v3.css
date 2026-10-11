@@ -1552,3 +1552,82 @@ html[data-theme="dark"] .f-alert.no {
     padding-block: calc(var(--hdr) + 0.9rem) 1.1rem !important;
   }
 }
+/* ============================================================
+   PROJECTS GALLERY: uniform card height
+   .gal-c--1 and .gal-c--4 previously used 16/8.2 while the rest
+   used 4/3.1, which made the cards different heights and pushed
+   their captions out of alignment. One ratio for every card.
+   ============================================================ */
+.gal-b,
+.gal-c .gal-b,
+.gal-c--1 .gal-b,
+.gal-c--2 .gal-b,
+.gal-c--3 .gal-b,
+.gal-c--4 .gal-b,
+.gal-c--5 .gal-b {
+  aspect-ratio: 4 / 3.1 !important;
+  height: auto !important;
+}
+
+/* ============================================================
+   SOCIAL ICONS — visible size / contrast fix
+   ============================================================ */
+.soc-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.6rem !important;
+  margin-top: 1.1rem !important;
+}
+.soc {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  border-radius: 14px !important;
+  border: 1px solid var(--line) !important;
+  background: var(--bg-soft) !important;
+  color: var(--ink-2) !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  box-shadow: 0 2px 8px rgba(10, 25, 47, 0.06) !important;
+  transition: background-color var(--t) var(--e), color var(--t) var(--e),
+    border-color var(--t) var(--e), transform var(--t) var(--e);
+}
+.soc svg {
+  width: 22px !important;
+  height: 22px !important;
+  stroke-width: 1.9 !important;
+}
+a.soc:hover {
+  background: var(--cyan-500) !important;
+  border-color: var(--cyan-500) !important;
+  color: #fff !important;
+  transform: translateY(-2px) !important;
+}
+/* inactive = dimmed but clearly visible */
+.soc.is-off {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+  border-style: dashed !important;
+  border-color: var(--ink-4) !important;
+  color: var(--ink-3) !important;
+}
+/* dark mode */
+html[data-theme="dark"] .soc {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+html[data-theme="dark"] .soc.is-off {
+  opacity: 0.5 !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+/* footer strip */
+.ftr .soc-row {
+  margin-top: 1rem !important;
+}
