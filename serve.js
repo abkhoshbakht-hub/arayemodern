@@ -23,12 +23,11 @@ const MIME = {
 const server = http.createServer((req, res) => {
   let urlPath = decodeURIComponent(req.url.split('?')[0]);
   if (urlPath === '/' || urlPath === '') {
-    res.writeHead(302, { Location: '/previews/arayemodern/en.html' });
+    res.writeHead(302, { Location: '/en.html' });
     res.end();
     return;
   }
 
-  urlPath = urlPath.replace(/^\/previews\/arayemodern/, '');
   if (urlPath === '' || urlPath === '/') urlPath = '/fa.html';
 
   let filePath = path.join(ROOT, urlPath);
