@@ -1,9 +1,23 @@
 /* Araye Modern - day / night toggle
-   Every page load starts in day mode; the choice is not remembered. */
+   The visitor's choice is remembered, and a first-time visitor follows the
+   operating system preference. */
 (function () {
   "use strict";
 
   var root = document.documentElement;
+  var KEY = "am-theme";
+
+  function stored() {
+    try { return localStorage.getItem(KEY); } catch (e) { return null; }
+  }
+
+  function remember(v) {
+    try { localStorage.setItem(KEY, v); } catch (e) { /* private mode */ }
+  }
+
+  function systemDark() {
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
 
   function render(dark) {
     root.setAttribute("data-theme", dark ? "dark" : "light");
@@ -24,17 +38,36 @@
   }
 
   function toggle() {
-    render(root.getAttribute("data-theme") !== "dark");
+    var next = root.getAttribute("data-theme") !== "dark";
+    render(next);
+    remember(next ? "dark" : "light");
   }
 
   function init() {
-    render(false);
+    var saved = stored();
+    render(saved ? saved === "dark" : systemDark());
 
     var buttons = document.querySelectorAll("[data-theme-toggle]");
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener("click", toggle);
     }
+
+    // follow the system only while the visitor has not chosen yet
+    if (window.matchMedia) {
+      var mq = window.matchMedia("(prefers-color-scheme: dark)");
+      var onChange = function (e) {
+        if (!stored()) render(e.matches);
+      };
+      if (mq.addEventListener) mq.addEventListener("change", onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    }
   }
+
+  // apply the stored theme before first paint to avoid a flash of day mode
+  try {
+    var pre = stored();
+    if (pre) root.setAttribute("data-theme", pre);
+  } catch (e) { /* ignore */ }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);

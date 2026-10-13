@@ -1,0 +1,5 @@
+# robots.txt - Araye Modern
+User-agent: *
+Allow: /
+
+Sitemap: https://arayemodern.com/sitemap.xml
