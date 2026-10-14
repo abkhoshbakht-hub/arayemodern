@@ -1,0 +1,129 @@
+# ============================================================================
+# Araye Modern — Apache / LiteSpeed configuration
+# Hosted on shared Iranian hosting (cPanel / DirectAdmin)
+# Primary domain: arayemodern.ir
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# 1. Force HTTPS
+# ----------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # http -> https  (only when the server actually serves https)
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ----------------------------------------------------------------------------
+# 2. Canonical host: arayemodern.ir  (no www, and the old .com domain)
+# ----------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # www.arayemodern.ir -> arayemodern.ir
+  RewriteCond %{HTTP_HOST} ^www\.arayemodern\.ir$ [NC]
+  RewriteRule ^ https://arayemodern.ir%{REQUEST_URI} [L,R=301]
+
+  # arayemodern.com (old domain, not renewed) -> arayemodern.ir
+  RewriteCond %{HTTP_HOST} ^(www\.)?arayemodern\.com$ [NC]
+  RewriteRule ^ https://arayemodern.ir%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ----------------------------------------------------------------------------
+# 3. Extensionless URLs  ->  internal .html files
+#    /fa            -> /fa.html
+#    /fa/services   -> /fa/services.html
+# ----------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 3a. Any URL ending in .html -> strip the suffix permanently.
+  #     Serves the real file if it exists, so this never loops.
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+
+  # 3b. Root language pages: /fa /en /ar  ->  /fa.html etc.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(fa|en|ar)$ /$1.html [L]
+
+  # 3c. Nested pages: /fa/services -> /fa/services.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+)$ /$1.html [L]
+</IfModule>
+
+# ----------------------------------------------------------------------------
+# 4. Page assets that must exist before the rewrite above is tried
+# ----------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} ^/(?:_next|img|fonts|js)/ [NC]
+  RewriteRule ^ - [L]
+</IfModule>
+
+# ----------------------------------------------------------------------------
+# 5. index.html — language picker
+# ----------------------------------------------------------------------------
+<IfModule mod_dir.c>
+  DirectoryIndex index.html index.php
+</IfModule>
+
+# ----------------------------------------------------------------------------
+# 6. MIME types (Apache occasionally misses modern web fonts / images)
+# ----------------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType font/woff2                .woff2
+  AddType image/webp                .webp
+  AddType image/svg+xml             .svg
+  AddType application/ld+json       .jsonld
+</IfModule>
+
+# ----------------------------------------------------------------------------
+# 7. Compression
+# ----------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/ld+json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ----------------------------------------------------------------------------
+# 8. Browser caching
+# ----------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                          "access plus 1 month"
+  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType image/jpeg                "access plus 1 year"
+  ExpiresByType image/png                 "access plus 1 year"
+  ExpiresByType image/webp                "access plus 1 year"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType font/woff2                "access plus 1 year"
+</IfModule>
+
+# ----------------------------------------------------------------------------
+# 9. Security headers
+# ----------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# ----------------------------------------------------------------------------
+# 10. Block access to the Telegram token file and backup leftovers
+# ----------------------------------------------------------------------------
+<FilesMatch "\.(env|log|ini|bak|sql)$">
+  Require all denied
+</FilesMatch>
+
+RedirectMatch 404 /\.git
+RedirectMatch 404 /_backup

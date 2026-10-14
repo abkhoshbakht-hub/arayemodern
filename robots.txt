@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://arayemodern.com/sitemap.xml
+Sitemap: https://arayemodern.ir/sitemap.xml

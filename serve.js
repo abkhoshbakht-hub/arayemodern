@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = process.env.PORT || process.argv[2] || 3000;
+const PORT = Number(process.env.PORT || process.argv[2] || 3000);
 const ROOT = __dirname;
 
 const MIME = {
@@ -20,29 +20,34 @@ const MIME = {
   '.woff': 'font/woff',
 };
 
+// Mimics the Apache .htaccess rules so local preview matches production:
+//   /fa            -> /fa.html
+//   /fa/services   -> /fa/services.html
+//   /fa/services.html -> 301 -> /fa/services
+function resolve(urlPath) {
+  // real file (assets, /_next/, /img/, /js/, /fonts/)
+  const direct = path.join(ROOT, urlPath);
+  if (urlPath !== '/' && fs.existsSync(direct) && fs.statSync(direct).isFile()) return direct;
+
+  // directory -> index.html
+  if (fs.existsSync(direct) && fs.statSync(direct).isDirectory()) {
+    const idx = path.join(direct, 'index.html');
+    if (fs.existsSync(idx)) return idx;
+  }
+
+  // extensionless -> .html
+  const asHtml = direct + '.html';
+  if (fs.existsSync(asHtml)) return asHtml;
+
+  // root language pages: /fa -> /fa.html
+  const rootHtml = path.join(ROOT, `${urlPath.slice(1)}.html`);
+  if (/^\/(fa|en|ar)$/.test(urlPath) && fs.existsSync(rootHtml)) return rootHtml;
+
+  return null;
+}
+
 const server = http.createServer((req, res) => {
   let urlPath = decodeURIComponent(req.url.split('?')[0]);
-  if (urlPath === '/' || urlPath === '') {
-    res.writeHead(302, { Location: '/en.html' });
-    res.end();
-    return;
-  }
-
-  if (urlPath === '' || urlPath === '/') urlPath = '/fa.html';
-
-  let filePath = path.join(ROOT, urlPath);
-
-  if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
-    filePath = path.join(filePath, 'index.html');
-  }
-
-  if (!fs.existsSync(filePath) && !path.extname(filePath)) {
-    if (fs.existsSync(filePath + '.html')) {
-      filePath = filePath + '.html';
-    } else if (urlPath === '/fa' || urlPath === '/en' || urlPath === '/ar') {
-      filePath = path.join(ROOT, `${urlPath.slice(1)}.html`);
-    }
-  }
 
   const noCache = {
     'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
@@ -50,20 +55,33 @@ const server = http.createServer((req, res) => {
     Expires: '0',
   };
 
-  if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+  if (urlPath === '/' || urlPath === '') {
+    const idx = path.join(ROOT, 'index.html');
+    res.writeHead(200, { 'Content-Type': MIME['.html'], ...noCache });
+    fs.createReadStream(idx).pipe(res);
+    return;
+  }
+
+  // 301 for the old .html form, same as the .htaccess rule
+  if (urlPath.endsWith('.html')) {
+    const clean = urlPath.replace(/\.html$/, '');
+    const target = resolve(clean) ? clean : urlPath;
+    if (resolve(target)) {
+      res.writeHead(301, { Location: target, ...noCache });
+      res.end();
+      return;
+    }
+  }
+
+  const filePath = resolve(urlPath);
+
+  if (filePath) {
     const ext = path.extname(filePath).toLowerCase();
-    const contentType = MIME[ext] || 'application/octet-stream';
-    res.writeHead(200, { 'Content-Type': contentType, ...noCache });
+    res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream', ...noCache });
     fs.createReadStream(filePath).pipe(res);
   } else {
-    const fallback = path.join(ROOT, 'fa.html');
-    if (fs.existsSync(fallback)) {
-      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', ...noCache });
-      fs.createReadStream(fallback).pipe(res);
-    } else {
-      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-      res.end('404 Not Found');
-    }
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', ...noCache });
+    res.end('404 Not Found');
   }
 });
 
